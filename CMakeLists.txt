@@ -7,9 +7,9 @@ add_subdirectory(gmock-1.7.0)
 # The actual building happens in here
 add_subdirectory(src)
 
-
 # Unit-tests are in here
 add_subdirectory(tests)
 
-
+# Documentation
+add_subdirectory(doc)
 
