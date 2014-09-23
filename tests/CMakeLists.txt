@@ -19,6 +19,9 @@ set(unit_test_libs
   ${PROJECT_NAME}
 )
 
+# Additional source files with testing utilities and such
+set(unit_test_utils
+)
 
 # ===== UNIT-TEST MAGIC ====
 
@@ -29,7 +32,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gmock_SOURCE_DIR}/include)
 
 # Builds each test into an executable and adds them to the `test` target.
 foreach(unit_test ${unit_tests})
-  add_executable(${unit_test} "${unit_test}.cpp")
+  add_executable(${unit_test} "${unit_test}.cpp" ${unit_test_utils})
   target_link_libraries(${unit_test} gtest_main gmock ${unit_test_libs})
   add_custom_target(${unit_test}_runtest COMMAND ${unit_test} DEPENDS ${unit_test} WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
   add_dependencies(test ${unit_test}_runtest)
